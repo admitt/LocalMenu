@@ -1,0 +1,34 @@
+.outer {
+    overflow: hidden;
+    position: relative;
+    width: 650px;
+}
+
+table {
+    margin: auto;
+}
+
+iframe {
+    position: absolute;
+    width: 1100px;
+    height: 900px;
+}
+
+.siil_outer {
+    height: 280px;
+}
+
+.siil_frame {
+    top: -300px;
+    left: -450px;
+}
+
+.baby_outer {
+    width: 652px;
+    height: 250px;
+}
+
+.baby_frame {
+    top: -375px;
+    left: -150px;
+}
