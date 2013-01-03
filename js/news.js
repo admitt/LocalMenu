@@ -2,7 +2,7 @@ var News = function () {
     var url = "http://www.postimees.ee/rss/";
     var feedLimit = 10;
     var jsonUrl = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&hl=ee&num=" + feedLimit + "&callback=?&q=" + encodeURIComponent(url);
-    var rowTemplate = "<h3><b>${publishedDate}</b>     ${title}</h3> <div> <p> ${content} </p> </div>";
+    var rowTemplate = "<h3><b>${publishedDate}</b>     ${title}</h3> <div> <p> ${content} <a href='${link}'>more...</a></p> </div>";
 
     $.ajax({
         url:jsonUrl,
@@ -41,7 +41,7 @@ var News = function () {
             setTimeout(function () {
                 switchTab(startWith);
                 switchTabs(++startWith);
-            }, 5000);
+            }, 10000);
         } else {
             switchTabs(0);
         }
