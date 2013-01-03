@@ -1,6 +1,8 @@
 function news() {
-    $("body").html('<div id="newsFeed"></div>');
+    var body= $("body");
+    body.html('<div id="newsFeed"></div>');
     new News();
+    body.append('<div id="copyright">provided by postimees.ee</div>');
 }
 
 function menu() {

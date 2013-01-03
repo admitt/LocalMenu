@@ -32,3 +32,8 @@ iframe {
     top: -375px;
     left: -150px;
 }
+
+div#copyright {
+    font: italic 15px arial, serif;
+    text-align: center;
+}
