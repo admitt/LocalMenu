@@ -1,7 +1,7 @@
 var News = function () {
     var url = "http://www.postimees.ee/rss/";
     var feedLimit = 10;
-    var itemShowTime = 15000;
+    var itemShowTime = 15 * 1000;
     var jsonUrl = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&hl=ee&num=" + feedLimit + "&callback=?&q=" + encodeURIComponent(url);
     var rowTemplate = "<h3><b>${publishedDate}</b>     ${title}</h3> <div> <p> ${content} <a href='${link}'>more...</a></p> </div>";
 
