@@ -33,7 +33,7 @@ iframe {
     left: -150px;
 }
 
-div#copyright {
+div.copyright {
     font: italic 15px arial, serif;
     text-align: center;
 }
