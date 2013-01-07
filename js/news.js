@@ -1,6 +1,5 @@
-var News = function () {
-    var url = "http://www.postimees.ee/rss/";
-    var feedLimit = 10;
+var News = function (url, rootElement, entryCallback) {
+    var feedLimit = 5;
     var itemShowTime = 15 * 1000;
     var jsonUrl = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&hl=ee&num=" + feedLimit + "&callback=?&q=" + encodeURIComponent(url);
     var rowTemplate = "<h3><b>${publishedDate}</b>     ${title}</h3> <div> <p> ${content} <a href='${link}'>more...</a></p> </div>";
@@ -9,12 +8,14 @@ var News = function () {
         url:jsonUrl,
         dataType:'json',
         success:function (data) {
-            var feed = $("#newsFeed");
-            $.each(data.responseData.feed.entries, function (id, value) {
-                value.publishedDate = formatDate(new Date(value.publishedDate));
-                feed.append($.tmpl(rowTemplate, value));
+            $.each(data.responseData.feed.entries, function (id, entry) {
+                entry.publishedDate = formatDate(new Date(entry.publishedDate));
+                if (entryCallback) {
+                    entryCallback(entry);
+                }
+                rootElement.append($.tmpl(rowTemplate, entry));
             });
-            feed.accordion();
+            rootElement.accordion();
             switchTabs(1); //first is opened by default
         },
         error:function () {
@@ -23,7 +24,7 @@ var News = function () {
     });
 
     function switchTab(id) {
-        $($(".ui-accordion-header")[id]).trigger("click")
+        $(rootElement.children(".ui-accordion-header")[id]).trigger("click")
     }
 
     function formatDate(date) {

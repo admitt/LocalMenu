@@ -1,14 +1,22 @@
 function news() {
-    var body= $("body");
-    body.html('<div id="newsFeed"></div>');
-    new News();
-    body.append('<div id="copyright">provided by postimees.ee</div>');
+    applyTemplate('template/news_template.html', function () {
+        new News("http://www.postimees.ee/rss/", $("#newsFeedPostimees"));
+        new News("http://uudised.err.ee/uudised_rss.php", $("#newsFeedErr"), function (e) {
+            e.content = e.content.split("<br>")[0];
+        })
+    });
 }
 
 function menu() {
-    var body = $('body');
-    $.get('template/menu_template.html', function(template) {
-        body.append(template);
+    applyTemplate('template/menu_template.html');
+    $('body').attr("style", "background-color: #C4C4C4");
+}
+
+function applyTemplate(templateName, whenReady) {
+    $.get(templateName, function (template) {
+        $('body').append(template);
+        if(whenReady) {
+            whenReady();
+        }
     }, "html");
-    body.attr("style", "background-color: #C4C4C4");
 }
