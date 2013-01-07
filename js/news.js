@@ -1,5 +1,5 @@
 var News = function (url, rootElement, entryCallback) {
-    var feedLimit = 5;
+    var feedLimit = 4;
     var itemShowTime = 15 * 1000;
     var jsonUrl = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&hl=ee&num=" + feedLimit + "&callback=?&q=" + encodeURIComponent(url);
     var rowTemplate = "<h3><b>${publishedDate}</b>     ${title}</h3> <div> <p> ${content} <a href='${link}'>more...</a></p> </div>";
@@ -15,7 +15,7 @@ var News = function (url, rootElement, entryCallback) {
                 }
                 rootElement.append($.tmpl(rowTemplate, entry));
             });
-            rootElement.accordion();
+            rootElement.accordion({heightStyle: 'fill'});
             switchTabs(1); //first is opened by default
         },
         error:function () {

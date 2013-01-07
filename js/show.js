@@ -1,9 +1,11 @@
 function news() {
     applyTemplate('template/news_template.html', function () {
-        new News("http://www.postimees.ee/rss/", $("#newsFeedPostimees"));
         new News("http://uudised.err.ee/uudised_rss.php", $("#newsFeedErr"), function (e) {
             e.content = e.content.split("<br>")[0];
-        })
+        });
+        new News("http://rus.err.ee/rss", $("#newsFeedErrRus"),  function (e) {
+            e.content = e.content.split(/<img .*>/)[1];
+        });
     });
 }
 
