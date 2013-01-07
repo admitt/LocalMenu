@@ -14,6 +14,10 @@ function menu() {
     $('body').attr("style", "background-color: #C4C4C4");
 }
 
+function cats() {
+    new Cats("");
+}
+
 function applyTemplate(templateName, whenReady) {
     $.get(templateName, function (template) {
         $('body').append(template);

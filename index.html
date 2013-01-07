@@ -8,14 +8,18 @@
     <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.js"></script>
     <script type="text/javascript" src="js/jquery.tmpl.js"></script>
     <script type="text/javascript" src="js/news.js"></script>
+    <script type="text/javascript" src="js/cats.js"></script>
     <script type="text/javascript" src="js/show.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             var now = new Date();
             var hours = now.getHours();
             var minutes = now.getMinutes();
             if (hours >= 11 && hours < 13) {
                 menu();
+            }
+            else if (hours > 14 && Math.round(Math.random() * 10) > 7) {
+                cats();
             }
             else {
                 news();
@@ -24,6 +28,5 @@
     </script>
 </head>
 <body>
-
 </body>
 </html>
