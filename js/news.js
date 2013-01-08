@@ -2,7 +2,7 @@ var News = function (url, rootElement, entryCallback) {
     var feedLimit = 4;
     var itemShowTime = 15 * 1000;
     var jsonUrl = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&hl=ee&num=" + feedLimit + "&callback=?&q=" + encodeURIComponent(url);
-    var rowTemplate = "<h3><b>${publishedDate}</b>     ${title}</h3> <div> <p> ${content} <a href='${link}'>more...</a></p> </div>";
+    var rowTemplate = '<h3><b>${publishedDate}</b>     ${title}</h3> <div> <p> ${content} <a href="${link}">more...</a></p> </div>';
 
     $.ajax({
         url:jsonUrl,
@@ -27,17 +27,6 @@ var News = function (url, rootElement, entryCallback) {
         $(rootElement.children(".ui-accordion-header")[id]).trigger("click")
     }
 
-    function formatDate(date) {
-        function addPrefixZeroIfNeeded(number) {
-            return number < 10 ? "0" + number : number;
-        }
-
-        var hours = date.getHours();
-        var minutes = date.getMinutes();
-        return addPrefixZeroIfNeeded(hours) + ":" + addPrefixZeroIfNeeded(minutes) + " "
-            + $.datepicker.formatDate('dd.mm.yy', date);
-    }
-
     function switchTabs(startWith) {
         if (startWith < feedLimit) {
             setTimeout(function () {
@@ -49,3 +38,14 @@ var News = function (url, rootElement, entryCallback) {
         }
     }
 };
+
+function formatDate(date) {
+    function addPrefixZeroIfNeeded(number) {
+        return number < 10 ? "0" + number : number;
+    }
+
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    return addPrefixZeroIfNeeded(hours) + ":" + addPrefixZeroIfNeeded(minutes) + " "
+        + addPrefixZeroIfNeeded(date.getDay()) + "." + addPrefixZeroIfNeeded(date.getMonth() + 1) + "." + date.getFullYear()
+}
