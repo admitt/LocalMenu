@@ -4,7 +4,9 @@ function news() {
             e.content = e.content.split("<br>")[0];
         });
         new News("http://rus.err.ee/rss", $("#newsFeedErrRus"),  function (e) {
-            e.content = e.content.split(/<img .*>/)[1];
+            if (e.content.match(/.*<img .*>.*/)) {
+                e.content = e.content.split(/<img .*>/)[1];
+            }
         });
     });
 }
