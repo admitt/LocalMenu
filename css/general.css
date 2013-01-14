@@ -1,7 +1,7 @@
 .outer {
     overflow: hidden;
     position: relative;
-    width: 650px;
+    width: 400px;
 }
 
 table#dailyMenu {
@@ -12,25 +12,28 @@ iframe {
     position: absolute;
     width: 1100px;
     height: 900px;
+    -moz-transform:scale(0.75);
+    moz-transform-origin: 0 0;
 }
 
 .siil_outer {
-    height: 280px;
+    height: 196px;
 }
 
 .siil_frame {
-    top: -300px;
+    top: -345px;
     left: -450px;
 }
 
-.baby_outer {
-    width: 652px;
-    height: 250px;
+.suliko_outer {
+    height: 341px;
+    width: 402px;
 }
 
-.baby_frame {
-    top: -375px;
-    left: -150px;
+.suliko_frame {
+    left: -361px;
+    top: -273px;
+    transform: scale(0.5);
 }
 
 div.copyright {
